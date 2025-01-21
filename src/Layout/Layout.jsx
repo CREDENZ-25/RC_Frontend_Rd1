@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import pixelBg from "../assets/BG_Login.png"
 
 const Layout = () => {
   
   return (
     <>
-      {/* <img className="pixelBG h-[100vh] absolute top-0 w-[100%] object-fill  z-[-1] opacity-[100%] " src={pixelBg}></img> */}
+      <img className="pixelBG h-[100vh] absolute top-0 w-[100%] object-fill  z-[-1] opacity-[100%] " src={pixelBg}></img>
 
       <div className="layout bg-transparent absolute min-h-[100vh] w-[100vw] flex flex-col justify-center z-[100] items-center overflow-x-hidden">
        
