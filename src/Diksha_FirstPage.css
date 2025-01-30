@@ -1,0 +1,61 @@
+
+@font-face {
+    font-family: 'Avenixel';
+    src: url('./assets/fonts/Avenixel.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Avenixel', cursive;
+    background: url('C:\Users\Dell\Desktop\rcfrontend\RC_Frontend_Rd1\src\bgfirstpage.jpeg') no-repeat center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  
+  .container {
+    text-align: center;
+    color: #EE8CAE;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 100%;
+    
+  }
+  
+  h1 {
+    
+    font-size: 4rem; 
+    text-shadow: 2px 2px 8px #181834(0, 0, 0, 0.7);
+    text-align: center;
+    
+  }
+  
+  .play-button {
+    display: inline-block;
+  padding: 10px 20px;
+  background-color: #EE8CAE;
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  } 
+  
+
+  .play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 12px rgba(255, 255, 255, 0.8);
+  }
+  
+  .play-button:active {
+    transform: scale(0.95);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+  } 

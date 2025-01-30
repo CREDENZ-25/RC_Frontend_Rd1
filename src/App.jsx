@@ -1,12 +1,13 @@
-import './App.css'
+import './index.css'
+import Diksha_FirstPage from './Diksha_FirstPage';
 
 function App() {
 
   return (
     <>
       <div className='text-3xl font-bold underline'>
-        <h1>RC Frontend</h1>
       </div>
+      <Diksha_FirstPage/>
     </>
   )
 }
