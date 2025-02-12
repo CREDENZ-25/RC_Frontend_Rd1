@@ -1,11 +1,15 @@
-import './App.css'
+import './index.css'
+import Rashmi_Question from './Rashmi_Question'
+import Navbar from './Navbar/Navbar'
 
 function App() {
 
   return (
     <>
       <div className='text-3xl font-bold underline'>
-        <h1>RC Frontend</h1>
+        <Navbar/>
+        
+        <Rashmi_Question/>
       </div>
     </>
   )
