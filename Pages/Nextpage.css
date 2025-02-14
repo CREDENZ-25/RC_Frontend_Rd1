@@ -1,0 +1,51 @@
+/* nextpage.css */
+
+/* Main container */
+.nextpage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e1f36, #3b3e66);
+    color: #ff79c6;
+    text-align: center;
+  }
+  
+  /* Title Styling */
+  .nextpage-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Content Section */
+  .nextpage-content {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 2px solid #451c44;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Back Button */
+  .nextpage-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #1a1b41;
+    color: rgba(238, 140, 174, 1);
+    border: 2px solid rgba(238, 140, 174, 1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .nextpage-button:hover {
+    background-color: rgba(238, 140, 174, 1);
+    color: #1a1b41;
+  }
+  
