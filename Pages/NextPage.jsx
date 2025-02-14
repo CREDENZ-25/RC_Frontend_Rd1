@@ -4,7 +4,7 @@ import "./NextPage.css";
 const NextPage = () => {
   return (
     <div>
-      <h1>Welcome to the New Page</h1>
+      <h1>Welcome to the Dummy Page</h1>
     </div>
   );
 };
