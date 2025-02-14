@@ -1,3 +1,20 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .page-container {
+    /* min-height: 100vh;
+    background: linear-gradient(135deg, #2A2A4C 0%, #1E1E38 100%);
+}*/
+
+.body{
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+}

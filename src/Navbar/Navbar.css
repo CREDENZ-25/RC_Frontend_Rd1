@@ -1,0 +1,127 @@
+.Navbar{
+    /* background-color: aquamarine; */
+    height: 100px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+.rc {
+    margin: 0;
+    position: absolute;
+    width: 155px;
+    height: 60px;
+    top: 41px;
+    left: 161px;
+    gap: 0px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+
+    font-size: 70px;
+    font-weight: 600;
+    line-height: 60px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    text-shadow: 
+        2px 2px 0px #4A1237, 
+        -2px -2px 0px #4A1237, 
+        2px -2px 0px #4A1237, 
+        -2px 2px 0px #4A1237;
+
+    color: #FFD1E8;
+}
+
+a {
+    text-decoration: none;
+}
+
+.leaderboard {
+    position: absolute;
+    width: 137px;
+    height: 24px;
+    top: 53px;
+    left: 820px;
+    gap: 0px;
+    opacity: 1;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    color: #FFD1E8;
+
+    text-shadow: 
+        2px 2px 0px #4A1237, 
+        -2px -2px 0px #4A1237, 
+        2px -2px 0px #4A1237, 
+        -2px 2px 0px #4A1237;
+}
+
+.result {
+    position: absolute;
+    width: 72px;
+    height: 24px;
+    top: 53px;
+    left: 1070px;
+    gap: 0px;
+    opacity: 1;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    color: #FFD1E8;
+
+    text-shadow: 
+        2px 2px 0px #4A1237, 
+        -2px -2px 0px #4A1237, 
+        2px -2px 0px #4A1237, 
+        -2px 2px 0px #4A1237;
+}
+
+.logout-box {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Reduced width */
+    height: 50px; /* Reduced height */
+    top: 39px;
+    left: 1270px;
+    gap: 0px;
+    border-radius: 25px; /* Adjusted for the smaller box */
+    opacity: 1; /* Ensure full visibility */
+    background: #CA5F93; 
+    border: 2px solid #4A1237; /* Border for consistency */
+    box-shadow: 2px 2px 0px 0px #4A1237; /* Shadow effect */
+}
+
+.logout {
+    position: relative; /* Simplified alignment */
+    text-align: center;
+    letter-spacing: 0.07em;
+    font-size: 18px; /* Reduced font size */
+    font-weight: 700;
+    line-height: 20px; /* Adjusted for smaller font size */
+    color: #FFD1E8;
+    text-shadow: 
+        2px 2px 0px #4A1237, 
+        -2px -2px 0px #4A1237, 
+        2px -2px 0px #4A1237, 
+        -2px 2px 0px #4A1237;
+}
+
+
