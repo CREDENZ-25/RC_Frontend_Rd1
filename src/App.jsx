@@ -1,14 +1,18 @@
-import './App.css'
+import React from "react";
+import 'pixel-retroui/dist/index.css';
+import Instructions from "../Pages/instructions";  // Ensure this file exists and is correct
+import NextPage from "../Pages/NextPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <div className='text-3xl font-bold underline'>
-        <h1>RC Frontend</h1>
-      </div>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Instructions />} />
+        <Route path="/nextpage" element={<NextPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
