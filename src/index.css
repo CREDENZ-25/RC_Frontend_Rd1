@@ -1,3 +1,54 @@
+@import 'pixel-retroui/dist/index.css';
+
+/* Import Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Load Custom Font */
+@font-face {
+    font-family: 'Avenixel';
+    src: url('/fonts/Avenixel.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.Avenixel {
+    font-family: 'Avenixel';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Avenixel';
+    background-color: #1a1b41;
+    color: #f8f8f2;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #ff79c6;
+    font-family: 'Avenixel';
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #f8f8f2;
+    font-family: 'Avenixel';
+}
+
+/* Buttons */
+.button {
+    font-family: 'Avenixel';
+    cursor: pointer;
+    background-color: #1a1b41;
+    color: #ff79c6;
+    padding: 10px 20px;
+    border: 2px solid #ff79c6;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.custom-shadow3 {
+  text-shadow: 0px 8px 0px #101e34; 
+}
