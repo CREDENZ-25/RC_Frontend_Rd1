@@ -51,7 +51,7 @@ const Layout = () => {
       flex: 1,
       renderCell: (params) => (
         <div style={{ 
-          color: '#FFD1E8',
+          color: '#FFDAB3',
           fontWeight: 'bold',
           fontSize: 'clamp(0.8rem, 2vw, 1.1rem)'
         }}>
@@ -147,7 +147,7 @@ const Layout = () => {
           <Card 
             className="card4"
             bg="#44437B"
-            textColor="#FFD1E8"
+            textColor="#FFDAB3"
             borderColor="#4A1237"
             shadowColor="#1E3445"
           >
@@ -168,13 +168,15 @@ const Layout = () => {
                 sx={{
                   border: 'none',
                   '& .MuiDataGrid-columnHeaders': {
-                    backgroundColor: '#CA5F93',
-                    color: '#FFD1E8',
+                    backgroundColor: '#FFDAB3 !important',
+                    color: '#ba4c81',
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
                     fontWeight: 'bold',
                     borderBottom: '2px solid #4A1237',
                   },
                   '& .MuiDataGrid-row': {
+                    backgroundColor: '#ba4c81',
+
                     cursor: 'pointer',
                     backgroundColor: 'rgba(68, 67, 123, 0.5)',
                     transition: 'all 0.3s ease',

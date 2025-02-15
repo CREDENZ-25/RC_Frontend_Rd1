@@ -14,14 +14,30 @@
 
 }
 
+.h1{
+    color: #FFDAB3;
+}
+
+.header-title{
+
+}
+
+.username{
+    height: 20px;
+    /* size: 0cap; */
+    /* text-size-adjust: 10px; */
+    font-size: small;
+}
+
 
 .container {
-    min-height: 100%;
+    min-height: 98%;
     width: 100%;
     /* background-color: #fff; */
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    /* justify-content: start; */
+    justify-content: center;
     align-items: center;
 }   
 
@@ -95,6 +111,10 @@
 }
 
 .top-cards {
+    transform: scale(0.95);
+    max-width: 100%;
+    max-height: 100%;
+    justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,6 +136,7 @@
     /* padding: 0.2rem; */
     border-radius: 0.2em;
     transition: transform 0.3s ease;
+    border-color: #B54B7E;
 
 }
 .card1{
@@ -134,8 +155,11 @@
     /* background-color: red; */
     width: 100%;
     height: 180px;
-    /* border: 2px solid red; */
+    border: 2px ;
+
     gap: 10px;
+    /* background-color: #fff; */
+    /* border-color: #B54B7E; */
     /* gap: 1.5rem; */
 }
 
@@ -146,8 +170,8 @@
 
 .medal-container {
     position: absolute;
-    top: 0%;
-    left: -1.5rem;
+    top: -10%;
+    left: -2rem;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
@@ -163,10 +187,12 @@
 
 .stats-container {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: center;
     /* gap: 2rem;
     padding: 1rem; */
-    background: rgba(255, 255, 255, 0.05);
+    /* background: rgba(255, 255, 255, 0.05); */
+    background: #44437B;
     border-radius: 8px;
 }
 
@@ -177,6 +203,7 @@
     gap: 0.5rem;
     padding: 1rem;
     border-radius: 8px;
+    background-color: #44437B;
     transition: transform 0.3s ease;
 }
 
@@ -195,7 +222,7 @@
 
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 800;
-    color: #FFD1E8;
+    color: #FFDAB3;
     text-align: center  ;
     text-shadow: 
         2px 2px 0px #4A1237, 
@@ -223,6 +250,7 @@
     width: 50%;
     padding: 2rem;
     border-radius: 12px;
+    transform: scale(0.95);
 }
 
 .attempted-ques {
@@ -260,8 +288,10 @@
     font-weight: 800;
     color: #FFDAB3;
     padding: 0.5rem 1rem;
-    background: rgba(74, 18, 55, 0.3);
-    border-radius: 8px;
+    /* background: rgba(74, 18, 55, 0.3); */
+    /* background: linear-gradient(135deg, #CA5F93 0%, #B54B7E 100%); */
+    background: #ba4c81;
+    /* border-radius: 8px; */
 }
 
 .datagrid-container {
@@ -323,3 +353,6 @@
     
 }
 
+.MuiDataGrid-columnHeaderTitleContainer{
+    /* background-color: #FFDAB3; */
+}
