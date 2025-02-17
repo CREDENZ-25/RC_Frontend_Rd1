@@ -4,6 +4,7 @@ import { Card, Input, Button } from 'pixel-retroui';
 import 'pixel-retroui/dist/index.css';
 import './Rashmi_Question.css';
 import Lifelines from './Lifelines/Lifelines';
+import Timer from './Timer/Timer';
 
 function Rashmi_Question() {
 
@@ -74,40 +75,50 @@ function Rashmi_Question() {
             <div className="flex flex-col lg:flex-row w-full mt-5 ml-0 p-0 justify-evenly items-center lg:items-center">
                 {/* Left Side: Question Card */}
                 <div className="w-full lg:w-[65vw] flex justify-center mt-8 sm:mt-16 lg:mt-8">
-    <Card className="w-full lg:w-[65vw] sm:w-[50vw] h-auto lg:h-[50vh] flex flex-col bg-[#393867] text-[#e2b3cc] border-[#451c44] shadow-black p-4">
-        {question.length > 0 ? (
-            question.map((q) => (
-                <div key={q.id} className="flex flex-col items-center">
-                    <svg viewBox="0 0 350 100" xmlns="http://www.w3.org/2000/svg" className="w-[100%] h-[30%]">
-                        <text
-                            x="50%"
-                            y="50%"
-                            dominantBaseline="middle"
-                            textAnchor="middle"
-                            fill="#e2b3cc"
-                            stroke="#4a1237"
-                            strokeWidth="7"
-                            paintOrder="stroke fill"
-                            className="font-custom sm:text-[5vw] lg:text-[3vw] max-lg:text-[5vh] custom-shadow3"
-                        >
-                            QUESTION {q.id}
-                        </text>
-                    </svg>
-                    <p className="text-[3vw] sm:text-[2vw] lg:text-[2vw] text-center mt-2">{q.text}</p>
+                    <Card
+                        bg="#393867"
+                        textColor="#e2b3cc"
+                        borderColor="#451c44"
+                        shadowColor="black"
+                        className="w-full lg:w-[65vw] sm:w-[50vw] h-auto lg:h-[50vh] flex flex-col p-4">
+                        {question.length > 0 ? (
+                            question.map((q) => (
+                                <div key={q.id} className="flex flex-col items-center">
+                                    <svg viewBox="0 0 350 100" xmlns="http://www.w3.org/2000/svg" className="w-[100%] h-[30%]">
+                                        <text
+                                            x="50%"
+                                            y="50%"
+                                            dominantBaseline="middle"
+                                            textAnchor="middle"
+                                            fill="#e2b3cc"
+                                            stroke="#4a1237"
+                                            strokeWidth="7"
+                                            paintOrder="stroke fill"
+                                            className="font-custom sm:text-[5vw] lg:text-[3vw] max-lg:text-[5vh] custom-shadow3"
+                                        >
+                                            QUESTION {q.id}
+                                        </text>
+                                    </svg>
+                                    <p className="text-[3vw] sm:text-[2vw] lg:text-[2vw] text-center mt-2">{q.text}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-center">Loading question...</p>
+                        )}
+                    </Card>
                 </div>
-            ))
-        ) : (
-            <p className="text-center">Loading question...</p>
-        )}
-    </Card>
-</div>
 
 
                 {/* Right Side: Score & Lifelines (Stacked) */}
                 <div className="flex flex-col lg:w-[17vw] lg:ml-5 sm:ml-0">
                     {/* Score Card */}
                     <div >
-                        <Card className="score w-full lg:w-[17vw] h-[8vh] flex lg:mt-8 justify-center items-center bg-[#393867] text-[#e2b3cc] border-[#451c44] shadow-black font-custom">
+                        <Card
+                            bg="#393867"
+                            textColor="#e2b3cc"
+                            borderColor="#451c44"
+                            shadowColor="black"
+                            className="score w-full lg:w-[17vw] h-[8vh] flex lg:mt-8 justify-center items-center shadow-black font-custom">
                             <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                                 <text
                                     x="50%"
@@ -141,7 +152,11 @@ function Rashmi_Question() {
                             {/* Input 1 */}
                             <Input
                                 type="text"
-                                className="bg-[#393867] text-[#e2b3cc] border-[#975183] w-full lg:w-[37%] h-[7.5vh] font-custom text-center"
+                                bg="#393867"
+                                textColor="#e2b3cc"
+                                borderColor="#451c44"
+                                shadowColor="black"
+                                className="w-full lg:w-[37%] h-[7.5vh] font-custom text-center"
                                 placeholder="INPUT 1"
                                 value={answer.input1}
                                 onChange={(e) => setAnswer({ ...answer, input1: e.target.value })}
@@ -150,7 +165,12 @@ function Rashmi_Question() {
 
                             {/* Input 2 */}
                             <Input
-                                className="bg-[#393867] text-[#e2b3cc] border-[#975183] w-full lg:w-[37%] h-[7.5vh] font-custom text-center"
+                                type="text"
+                                bg="#393867"
+                                textColor="#e2b3cc"
+                                borderColor="#451c44"
+                                shadowColor="black"
+                                className="w-full lg:w-[37%] h-[7.5vh] font-custom text-center"
                                 placeholder="INPUT 2"
                                 value={answer.input2}
                                 onChange={(e) => setAnswer({ ...answer, input2: e.target.value })}
@@ -159,7 +179,12 @@ function Rashmi_Question() {
 
                             {/* Submit Button */}
                             <Button
-                                className="bg-[#ca5f93] text-[#e2b3cc] border-[#232f43] shadow-[#451c44]  w-full lg:w-[10vw] h-[7.5vh] flex justify-center"
+                                type="text"
+                                bg="#ca5f93"
+                                textColor="#e2b3cc"
+                                borderColor="#451c44"
+                                shadowColor="black"
+                                className=" shadow-[#451c44]  w-full lg:w-[10vw] h-[7.5vh] flex justify-center"
                                 onClick={() => handleSubmit(q.id, input1Disabled ? 2 : 1)}
                             >
                                 <svg viewBox="0 0 400 170" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">

@@ -21,7 +21,12 @@ function Lifelines() {
 
     return (
         <div>
-            <Card className="score w-full lg:w-[17vw] lg:h-[37vh]  sm:h-[30vh]  flex-col justify-center items-center bg-[#393867] text-[#e2b3cc] border-[#451c44] shadow-black font-custom">
+            <Card
+                bg="#393867"
+                textColor="#e2b3cc"
+                borderColor="#451c44"
+                shadowColor="black"
+                className="score w-full lg:w-[17vw] lg:h-[37vh]  sm:h-[30vh]  flex-col justify-center items-center  shadow-black font-custom">
                 <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                     <text
                         x="50%" y="50%" dominantBaseline="middle" textAnchor="middle"
@@ -34,7 +39,12 @@ function Lifelines() {
 
                 <div className="flex flex-col items-center gap-2 w-full">
                     {lifelines.map((lifeline) => (
-                        <Card key={lifeline.id} className="w-[90%] h-[40px] flex items-center px-2 bg-[#ca5f93] text-black border-black shadow-[#c381b5]">
+                        <Card key={lifeline.id}
+                            bg="#ca5f93"
+                            textColor="#e2b3cc"
+                            borderColor="#451c44"
+                            shadowColor="black"
+                            className="w-[90%] h-[40px] flex items-center px-2 shadow-[#c381b5]">
                             <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                                 <text
                                     x="1%" y="50%" dominantBaseline="middle"
@@ -67,7 +77,7 @@ function Lifelines() {
                 >
                     <div
                         className="p-6 rounded-lg  text-center w-[300px] h-[300px] bg-[#1b1230] shadow-[0_0_8px_#e2b3cc]"
-                        
+
                         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
                     >
                         {/* Lifeline Card (Unique Content) */}
