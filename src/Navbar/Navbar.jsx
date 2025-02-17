@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="w-full fixed top-[10px] left-0 flex flex-row justify-between items-center px-12 bg-transparent z-50">
       {/* Logo aligned with start of questions */}
       <h3 className="text-[#FFD1E8] text-3xl sm:text-2xl font-bold tracking-wide text-left shadow-custom">
-        RC
+        RC 
       </h3>
 
       {/* Right Side: Instructions & Logout */}

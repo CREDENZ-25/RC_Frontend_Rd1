@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import { Card, Input, Button } from 'pixel-retroui';
 import 'pixel-retroui/dist/index.css';
 import './Rashmi_Question.css';
 import Lifelines from './Lifelines/Lifelines';
 import Timer from './Timer/Timer';
+import { BrowserRouter } from 'react-router-dom';
+import FullScreenEnforcer from "./Fullscreen/Fullscreen";
+
 
 function Rashmi_Question() {
 
@@ -71,10 +73,16 @@ function Rashmi_Question() {
 
     return (
         <>
+        <FullScreenEnforcer/>
 
             <div className="flex flex-col lg:flex-row w-full mt-5 ml-0 p-0 justify-evenly items-center lg:items-center">
                 {/* Left Side: Question Card */}
-                <div className="w-full lg:w-[65vw] flex justify-center mt-8 sm:mt-16 lg:mt-8">
+
+                <div className="w-full lg:w-[65vw] flex flex-col justify-center mt-8 sm:mt-16 lg:mt-8">
+                    <BrowserRouter>
+                        <Timer />
+
+                    </BrowserRouter>
                     <Card
                         bg="#393867"
                         textColor="#e2b3cc"
@@ -110,7 +118,7 @@ function Rashmi_Question() {
 
 
                 {/* Right Side: Score & Lifelines (Stacked) */}
-                <div className="flex flex-col lg:w-[17vw] lg:ml-5 sm:ml-0">
+                <div className="flex flex-col lg:w-[17vw] lg:ml-5 sm:ml-0 ">
                     {/* Score Card */}
                     <div >
                         <Card
@@ -118,7 +126,7 @@ function Rashmi_Question() {
                             textColor="#e2b3cc"
                             borderColor="#451c44"
                             shadowColor="black"
-                            className="score w-full lg:w-[17vw] h-[8vh] flex lg:mt-8 justify-center items-center shadow-black font-custom">
+                            className="score w-full lg:w-[17vw] h-[8vh] flex lg:mt-[110px] justify-center items-center shadow-black font-custom">
                             <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                                 <text
                                     x="50%"
