@@ -1,60 +1,7 @@
-.rc {
-    margin: 0;
-    position: absolute;
-    width: 155px;
-    height: 60px;
-    top: 41px;
-    left: 35px;
-    gap: 0px;
-    border: 2px 0px 0px 0px;
-    opacity: 0px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 60px;
-    letter-spacing: 0.06em;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-
-    text-shadow: 
-        2px 2px 0px #4A1237, 
-        -2px -2px 0px #4A1237, 
-        2px -2px 0px #4A1237, 
-        -2px 2px 0px #4A1237;
-
-    color: #FFD1E8;
-}
-
-a {
-    text-decoration: none;
-}
-
-.leaderboard {
-    position: absolute;
-    width: 72px;
-    height: 24px;
-    top: 53px;
-    left: 1100px;
-    gap: 0px;
-    opacity: 1;
-
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-
-    color: #FFD1E8;
-
-    text-shadow: 
-        2px 2px 0px #4A1237, 
-        -2px -2px 0px #4A1237, 
-        2px -2px 0px #4A1237, 
-        -2px 2px 0px #4A1237;
-}
 
 
 @font-face {
@@ -63,17 +10,18 @@ a {
     font-weight: normal;
     font-style: normal;
     text-decoration: none;
-
 }
 
 /* Apply outline to text */
 .text-outline {
     font-size: 40px;
-    
-    /* Text color */
     text-shadow:
-        2px 2px 0px #4a1237  /*bottom right*/,        
-        -2px -2px 0px #4a1237, /* top right*/
-        2px -2px 0px #4a1237, /*top right*/
-        -2px 2px 0px #4a1237; /*bottom left*/
+        2px 2px 0px #4a1237,
+        -2px -2px 0px #4a1237,
+        2px -2px 0px #4a1237,
+        -2px 2px 0px #4a1237;
+}
+
+custom-shadow3 {
+    text-shadow: 0px 8px 0px #101e34;
 }

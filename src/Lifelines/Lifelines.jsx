@@ -21,41 +21,25 @@ function Lifelines() {
 
     return (
         <div>
-            <Card
-                bg="#393867"
-                textColor="#e2b3cc"
-                borderColor="#451c44"
-                shadowColor="black"
-                className="lifelines w-[17vw] h-[38vh] flex flex-col items-center p-1"
-                style={{ fontFamily: "MyCustomFont", textDecoration: "none" }}
-            >
-                {/* LIFELINES Title */}
+            <Card className="score w-full lg:w-[17vw] lg:h-[37vh]  sm:h-[30vh]  flex-col justify-center items-center bg-[#393867] text-[#e2b3cc] border-[#451c44] shadow-black font-custom">
                 <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                     <text
                         x="50%" y="50%" dominantBaseline="middle" textAnchor="middle"
                         fill="#e2b3cc" stroke="#4a1237" strokeWidth="10" paintOrder="stroke fill"
-                        style={{ fontFamily: "MyCustomFont" }} className="custom-shadow3 font-normal lg:text-[5vw] max-lg:text-[2vh]"
+                        className="custom-shadow3 font-normal lg:text-[4vw] max-lg:text-[2vh]"
                     >
                         LIFELINES
                     </text>
                 </svg>
 
-                {/* Lifeline Cards */}
                 <div className="flex flex-col items-center gap-2 w-full">
                     {lifelines.map((lifeline) => (
-                        <Card
-                            key={lifeline.id}
-                            bg="#ca5f93"
-                            textColor="black"
-                            borderColor="black"
-                            shadowColor="#c381b5"
-                            className="w-[90%] h-[40px] flex  items-center px-2"
-                        >
+                        <Card key={lifeline.id} className="w-[90%] h-[40px] flex items-center px-2 bg-[#ca5f93] text-black border-black shadow-[#c381b5]">
                             <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                                 <text
-                                    x="1%" y="50%" dominantBaseline="middle" 
+                                    x="1%" y="50%" dominantBaseline="middle"
                                     fill="#e2b3cc" stroke="#4a1237" strokeWidth="10" paintOrder="stroke fill"
-                                    style={{ fontFamily: "MyCustomFont" }} className="custom-shadow3 font-normal lg:text-[5vw] max-lg:text-[2vh]"
+                                    className="custom-shadow3 font-normal lg:text-[5vw] max-lg:text-[2vh]"
                                 >
                                     {lifeline.title}
                                 </text>
@@ -63,10 +47,10 @@ function Lifelines() {
 
                             <div className="flex gap-2">
                                 <button onClick={() => { setSelectedLifeline(lifeline); setIsOpen(true); }}>
-                                    <FontAwesomeIcon icon={faCircleInfo} style={{ fontSize: "20px" }} color="#4a0f35" />
+                                    <FontAwesomeIcon icon={faCircleInfo} className="text-[#4a0f35] text-lg" />
                                 </button>
                                 <button>
-                                    <FontAwesomeIcon icon={faCirclePlay} style={{ fontSize: "20px" }} color="#4a0f35" />
+                                    <FontAwesomeIcon icon={faCirclePlay} className="text-[#4a0f35] text-lg" />
                                 </button>
                             </div>
                         </Card>
@@ -82,13 +66,8 @@ function Lifelines() {
                     style={{ zIndex: 100 }}
                 >
                     <div
-                        className="p-6 rounded-lg shadow-lg text-center"
-                        style={{
-                            width: "300px",
-                            height: "300px",
-                            backgroundColor: "#1b1230",
-                            boxShadow: "0 0 8px #e2b3cc",
-                        }}
+                        className="p-6 rounded-lg  text-center w-[300px] h-[300px] bg-[#1b1230] shadow-[0_0_8px_#e2b3cc]"
+                        
                         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
                     >
                         {/* Lifeline Card (Unique Content) */}

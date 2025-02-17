@@ -1,54 +1,50 @@
 import React from 'react';
 import { Button } from 'pixel-retroui';
 import 'pixel-retroui/dist/index.css';
-import './Navbar.css';
 
 const Navbar = () => {
   return (
-    <>
-      <div style={{marginBottom:'20px'}} >
-        {/* Logo */}
-        
-          <h3 className='rc'>RC</h3>
-        
-        {/* Links */}
-        
-          <a className="leaderboard" href="">INSTRUCTIONS</a>
-          
-          
-        
+    <div className="w-full fixed top-[10px] left-0 flex flex-row justify-between items-center px-12 bg-transparent z-50">
+      {/* Logo aligned with start of questions */}
+      <h3 className="text-[#FFD1E8] text-3xl sm:text-2xl font-bold tracking-wide text-left shadow-custom">
+        RC
+      </h3>
+
+      {/* Right Side: Instructions & Logout */}
+      <div className="flex flex-row items-center space-x-6 sm:space-x-10">
+        {/* Instructions Link */}
+        <a className="text-[#FFD1E8] text-base sm:text-lg font-bold tracking-wider shadow-custom hover:underline" href="">
+          INSTRUCTIONS
+        </a>
+
         {/* Logout Button */}
-        <Button
-          bg="#ca5f93"
-          textColor="#e2b3cc"
-          borderColor="#232f43"
-          shadowcolor="#451c44"
-          className='text-outline'
-          style={{ width: "120px", height: "35px",position:'absolute', top:'40px', left:'1285px', }}
-        >
-          <svg
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full bg--200"
+        <div className="w-28 sm:w-36">
+          <Button
+            bg="#ca5f93"
+            textColor="#e2b3cc"
+            borderColor="#232f43"
+            shadowcolor="#451c44"
+            className="w-full h-10 sm:h-12 flex justify-center items-center shadow-custom"
           >
-            <text
-              x="50%"
-              y="50%"
-              dominantBaseline="middle"
-              textAnchor="middle"
-              fill="#e2b3cc"
-              stroke="#4a1237"
-              strokeWidth="2"
-              paintOrder="stroke fill"
-              style={{ fontFamily: 'MyCustomFont', textDecoration: 'none' }}
-              className="custom-shadow3 font-normal lg:text-[6vw] max-lg:text-[2vh]"
-            >
-              LOGOUT
-            </text>
-          </svg>
-        </Button>
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+              <text
+                x="50%"
+                y="50%"
+                dominantBaseline="middle"
+                textAnchor="middle"
+                fill="#e2b3cc"
+                stroke="#4a1237"
+                strokeWidth="9"
+                paintOrder="stroke fill"
+                className="font-MyCustomFont lg:text-5xl sm:text-3xl"
+              >
+                LOGOUT
+              </text>
+            </svg>
+          </Button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

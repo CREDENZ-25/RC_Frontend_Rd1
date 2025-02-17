@@ -71,261 +71,121 @@ function Rashmi_Question() {
     return (
         <>
 
-            <div style={{ display: 'flex', marginTop: '0', flexWrap: 'wrap', overflow: 'hidden' }}>
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',  // Align cards side by side
-                        flexWrap: 'wrap',  // Allow wrapping if necessary
-                        width: '100%',
-                        marginTop: '0%',
-                        marginLeft: '0%',
-                        className: 'container'
-
-                    }}
-                >
-                    <div style={{ flex: 1, }}>
-
-                        <Card
-                            bg="#393867"
-                            textColor="#e2b3cc"
-                            borderColor="#451c44"
-                            shadowColor="black"
-                            className="w-[65vw] h-[50vh] flex "
-                            id="question"
+            <div className="flex flex-col lg:flex-row w-full mt-5 ml-0 p-0 justify-evenly items-center lg:items-center">
+                {/* Left Side: Question Card */}
+                <div className="w-full lg:w-[65vw] flex justify-center mt-8 sm:mt-16 lg:mt-8">
+    <Card className="w-full lg:w-[65vw] sm:w-[50vw] h-auto lg:h-[50vh] flex flex-col bg-[#393867] text-[#e2b3cc] border-[#451c44] shadow-black p-4">
+        {question.length > 0 ? (
+            question.map((q) => (
+                <div key={q.id} className="flex flex-col items-center">
+                    <svg viewBox="0 0 350 100" xmlns="http://www.w3.org/2000/svg" className="w-[100%] h-[30%]">
+                        <text
+                            x="50%"
+                            y="50%"
+                            dominantBaseline="middle"
+                            textAnchor="middle"
+                            fill="#e2b3cc"
+                            stroke="#4a1237"
+                            strokeWidth="7"
+                            paintOrder="stroke fill"
+                            className="font-custom sm:text-[5vw] lg:text-[3vw] max-lg:text-[5vh] custom-shadow3"
                         >
-                            {question.length > 0 ? (
-                                question.map((q) => (
+                            QUESTION {q.id}
+                        </text>
+                    </svg>
+                    <p className="text-[3vw] sm:text-[2vw] lg:text-[2vw] text-center mt-2">{q.text}</p>
+                </div>
+            ))
+        ) : (
+            <p className="text-center">Loading question...</p>
+        )}
+    </Card>
+</div>
 
-                                    <svg
-                                        viewBox="0 0 350 100"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-[25vw] h-[10vh]"
-                                        key={q.id}
 
-                                    >
-                                        <text
-
-                                            x="6vw"
-                                            y="10vh"
-                                            dominantBaseline="middle"
-                                            textAnchor="middle"
-                                            fill="#e2b3cc"
-                                            stroke="#4a1237"
-                                            strokeWidth="4"
-                                            paintOrder="stroke fill"
-                                            style={{ fontFamily: "MyCustomFont", fontSize: '4.5vw' }}
-                                            className="custom-shadow3 font-normal lg:text-[1vw] max-lg:text-[5vh]"
-                                        >
-                                            QUESTION {q.id}
-                                        </text>
-                                    </svg>
-                                ))
-                            ) : (
-                                <p>?</p>
-                            )}
-
-                            <div
-                                xmlns="http://www.w3.org/1999/xhtml"
-                                style={{
-                                    color: '#e2b3cc',
-                                    fontSize: '10px',
-                                    lineHeight: '1',
-                                    textAlign: 'justify',
-                                    fontFamily: 'MyCustomFont',
-                                    fontWeight: "lighter",
-                                    fontSize: '20px'
-                                }}
-                            >
-                                {question.length > 0 ? (
-                                    question.map((q) => (
-                                        <p key={q.id}
-
-                                            style={{
-                                                marginBottom: '8px', position: 'absolute',
-                                                left: '125px', fontSize: '30px'
-                                            }}>
-                                            <svg>
-                                                <foreignObject
-                                                    x="1.8vw"
-                                                    y="13vh"
-                                                    width="92%"
-                                                    height="70%"
-
-                                                >
-                                                    {q.text}
-                                                </foreignObject>
-                                            </svg>
-                                        </p>
-                                    ))
-                                ) : (
-                                    <p>Loading question...</p>
-                                )}
-                            </div>
+                {/* Right Side: Score & Lifelines (Stacked) */}
+                <div className="flex flex-col lg:w-[17vw] lg:ml-5 sm:ml-0">
+                    {/* Score Card */}
+                    <div >
+                        <Card className="score w-full lg:w-[17vw] h-[8vh] flex lg:mt-8 justify-center items-center bg-[#393867] text-[#e2b3cc] border-[#451c44] shadow-black font-custom">
+                            <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                                <text
+                                    x="50%"
+                                    y="50%"
+                                    dominantBaseline="middle"
+                                    textAnchor="middle"
+                                    fill="#e2b3cc"
+                                    stroke="#4a1237"
+                                    strokeWidth="11"
+                                    paintOrder="stroke fill"
+                                    className="custom-shadow3 font-normal text-[4vw] lg:text-[4vw]"
+                                >
+                                    SCORE: {score}
+                                </text>
+                            </svg>
                         </Card>
                     </div>
 
-                    <div style={{ flex: 1, paddingLeft: '20px' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <Card
-                                bg="#393867"
-                                textColor="#e2b3cc"
-                                borderColor="#451c44"
-                                shadowColor="black"
-                                className="score w-[17vw] h-[8.5vh] flex items-center mb-4"
-                                style={{ fontFamily: 'MyCustomFont' }}
-                            >
-                                <svg
-                                    viewBox="0 0 500 100"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-full h-full"
-                                >
-                                    <text
-                                        x="40%"
-                                        y="50%"
-                                        dominantBaseline="middle"
-                                        textAnchor="middle"
-                                        fill="#e2b3cc"
-                                        stroke="#4a1237"
-                                        strokeWidth="11"
-                                        paintOrder="stroke fill"
-                                        style={{ fontFamily: "MyCustomFont", fontSize: '130px' }}
-                                        className="custom-shadow3 font-normal lg:text-[3.5vw] max-lg:text-[2vh]"
-                                    >
-                                        SCORE
-                                    </text>
-                                </svg>
-
-                                <svg
-                                    viewBox="0 0 500 100"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-full h-full"
-                                >
-                                    <text
-                                        x="77%"
-                                        y="50%"
-                                        dominantBaseline="middle"
-                                        textAnchor="middle"
-                                        fill="#e2b3cc"
-                                        stroke="#4a1237"
-                                        strokeWidth="11"
-                                        paintOrder="stroke fill"
-                                        style={{ fontFamily: "MyCustomFont", fontSize: '130px' }}
-                                        className="custom-shadow3 font-normal lg:text-[3.5vw] max-lg:text-[2vh]"
-                                    >
-                                        {score}
-                                    </text>
-                                </svg>
-                            </Card>
-
-                            <Lifelines />
-                        </div>
+                    {/* Lifeline Card */}
+                    <div className=" lg:mt-5">
+                        <Lifelines />
                     </div>
                 </div>
-
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-start',
-                        gap: '20px',
-                        width: '100%',
-                        marginLeft: '2.5%',
-                        marginTop: '20px',
-                        alignItems: 'center'  // Ensure the inputs and buttons align properly
-                    }}
-                >
-                    {question?.length > 0 &&
-                        question.map((q) => (
-                            <div key={q.id} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        position: 'absolute',
-                                        left: '7.5vw',
-                                        gap: '20px',
-                                        width: '100%',
-                                        marginBottom: '10px',
-
-
-                                    }}
-                                >
-                                    <Input
-                                        type='text'
-                                        bg="#393867"
-                                        textColor="#e2b3cc"
-                                        borderColor="#975183"
-                                        placeholder="INPUT 1"
-                                        className='input-container'
-                                        style={{
-
-                                            width: "31.5vw",
-                                            height: "7.5vh",
-                                            fontFamily: 'MyCustomFont',
-                                        }}
-                                        value={answer.input1}
-                                        onChange={(e) => setAnswer({ ...answer, input1: e.target.value })}
-                                        disabled={input1Disabled}
-                                    />
-
-                                    <Input
-                                        bg="#393867"
-                                        textColor="#e2b3cc"
-                                        borderColor="#975183"
-                                        placeholder="INPUT 2"
-                                        className='input-container'
-                                        style={{
-
-                                            width: "31.5vw",
-                                            height: "7.5vh",
-                                            fontFamily: 'MyCustomFont',
-                                        }}
-                                        value={answer.input2}
-                                        onChange={(e) => setAnswer({ ...answer, input2: e.target.value })}
-                                        disabled={input2Disabled}
-                                    />
-                                </div>
-
-                                <Button
-                                    bg="#ca5f93"
-                                    textColor="#e2b3cc"
-                                    borderColor="#232f43"
-                                    shadowColor="#451c44"
-                                    className=" submit-btn w-[9vw] h-[6.5vh] flex justify-center "
-                                    onClick={() => handleSubmit(q.id, input1Disabled ? 2 : 1)}
-                                    style={{ marginTop: "6vh", position: 'absolute', left: '82.5vw' }}
-                                >
-                                    <svg
-                                        viewBox="0 0 400 170"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-full h-full"
-                                    >
-                                        <text
-                                            x="50%"
-                                            y="50%"
-                                            dominantBaseline="middle"
-                                            textAnchor="middle"
-                                            fill="#e2b3cc"
-                                            stroke="#4a1237"
-                                            strokeWidth="17"
-                                            paintOrder="stroke fill"
-                                            style={{
-                                                fontFamily: "MyCustomFont",
-                                                textDecoration: 'none',
-                                            }}
-                                            className="custom-shadow3 font-normal lg:text-[7vw] max-lg:text-[5vh]"
-                                        >
-                                            SUBMIT
-                                        </text>
-                                    </svg>
-                                </Button>
-                            </div>
-                        ))}
-                    {responseMessage && <p className='mt-4 text-lg'>{responseMessage}</p>}
-                </div>
-
-
             </div>
+
+            {/* Inputs & Submit Section */}
+            <div className="w-full flex flex-col lg:flex-row items-center justify-start mt-5 lg:mt-10 gap-4">
+                {question?.length > 0 &&
+                    question.map((q) => (
+                        <div key={q.id} className="flex flex-col lg:flex-row gap-9 w-full max-w-[90%] lg:max-w-[100%]">
+                            {/* Input 1 */}
+                            <Input
+                                type="text"
+                                className="bg-[#393867] text-[#e2b3cc] border-[#975183] w-full lg:w-[37%] h-[7.5vh] font-custom text-center"
+                                placeholder="INPUT 1"
+                                value={answer.input1}
+                                onChange={(e) => setAnswer({ ...answer, input1: e.target.value })}
+                                disabled={input1Disabled}
+                            />
+
+                            {/* Input 2 */}
+                            <Input
+                                className="bg-[#393867] text-[#e2b3cc] border-[#975183] w-full lg:w-[37%] h-[7.5vh] font-custom text-center"
+                                placeholder="INPUT 2"
+                                value={answer.input2}
+                                onChange={(e) => setAnswer({ ...answer, input2: e.target.value })}
+                                disabled={input2Disabled}
+                            />
+
+                            {/* Submit Button */}
+                            <Button
+                                className="bg-[#ca5f93] text-[#e2b3cc] border-[#232f43] shadow-[#451c44]  w-full lg:w-[10vw] h-[7.5vh] flex justify-center"
+                                onClick={() => handleSubmit(q.id, input1Disabled ? 2 : 1)}
+                            >
+                                <svg viewBox="0 0 400 170" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        dominantBaseline="middle"
+                                        textAnchor="middle"
+                                        fill="#e2b3cc"
+                                        stroke="#4a1237"
+                                        strokeWidth="17"
+                                        paintOrder="stroke fill"
+                                        className="custom-shadow3 font-normal text-[7vw] lg:text-[4vw]"
+                                    >
+                                        SUBMIT
+                                    </text>
+                                </svg>
+                            </Button>
+                        </div>
+                    ))}
+                {responseMessage && <p className="mt-4 text-lg text-center">{responseMessage}</p>}
+            </div>
+
+
+
+
         </>
     )
 }
