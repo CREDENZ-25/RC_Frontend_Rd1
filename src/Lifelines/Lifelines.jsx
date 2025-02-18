@@ -13,11 +13,33 @@ function Lifelines() {
     const [selectedLifeline, setSelectedLifeline] = useState(null);
 
     // Lifeline Information
-    const lifelines = [
-        { id: 1, title: "Skip", description: "You can skip the question." },
-        { id: 2, title: "Freeze", description: "Time will be frozen for 2 minutes." },
-        { id: 3, title: "Double", description: "For 2 minutes, your points will double for correct answers." },
-    ];
+    const [lifelines, setLifelines] = useState([
+        { id: 1, title: "Skip", description: "You can skip the question.", endpoint: "lifeline1" },
+        { id: 2, title: "Freeze", description: "Time will be frozen for 2 minutes.", endpoint: "lifeline2" },
+        { id: 3, title: "Double", description: "For 2 minutes, your points will double for correct answers.", endpoint: "lifeline3" },
+    ]);
+
+    const handleLifelineUse = async (endpoint) => {
+        try {
+            const response = await fetch(`http://localhost:5000/${endpoint}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" }
+            });
+
+            const data = await response.json();
+            console.log(data.message);
+
+            // Update the lifelines state to disable the used lifeline
+            setLifelines(prevLifelines =>
+                prevLifelines.map(lifeline =>
+                    lifeline.endpoint === endpoint ? { ...lifeline, used: true } : lifeline
+                )
+            );
+        } catch (error) {
+            console.error("Error using lifeline:", error);
+        }
+    };
+
 
     return (
         <div>
@@ -59,8 +81,12 @@ function Lifelines() {
                                 <button onClick={() => { setSelectedLifeline(lifeline); setIsOpen(true); }}>
                                     <FontAwesomeIcon icon={faCircleInfo} className="text-[#4a0f35] text-lg" />
                                 </button>
-                                <button>
-                                    <FontAwesomeIcon icon={faCirclePlay} className="text-[#4a0f35] text-lg" />
+                                <button
+                                    onClick={() => handleLifelineUse(lifeline.endpoint)}
+                                    disabled={lifeline.used} // Disable button if lifeline is used
+                                    className={`text-[#4a0f35] text-lg ${lifeline.used ? "opacity-50 cursor-not-allowed" : ""}`}
+                                >
+                                    <FontAwesomeIcon icon={faCirclePlay} />
                                 </button>
                             </div>
                         </Card>
@@ -76,12 +102,11 @@ function Lifelines() {
                     style={{ zIndex: 100 }}
                 >
                     <div
-                        className="p-6 rounded-lg  text-center w-[300px] h-[300px] bg-[#1b1230] shadow-[0_0_8px_#e2b3cc]"
-
+                        className="p-6 rounded-lg text-center w-[300px] h-[300px] bg-[#1b1230] shadow-[0_0_8px_#e2b3cc] relative"  // Add relative positioning
                         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
                     >
                         {/* Lifeline Card (Unique Content) */}
-                        <h2 className="text-2xl font-bold mb-2" style={{ color: "#e2b3cc", fontSize: "35px", marginTop: '50px', }}>
+                        <h2 className="text-2xl font-bold mb-2" style={{ color: "#e2b3cc", fontSize: "35px", marginTop: '50px' }}>
                             {selectedLifeline.title}
                         </h2>
                         <br />
@@ -91,8 +116,8 @@ function Lifelines() {
 
                         {/* Close Button */}
                         <button
-                            className="absolute  text-white text-lg"
-                            style={{ fontFamily: "MyCustomFont", marginLeft: '100px', top: '220px', color: "#e2b3cc" }}
+                            className="absolute text-white text-lg"
+                            style={{ fontFamily: "MyCustomFont", right: '10px', top: '10px', color: "#e2b3cc" }}
                             onClick={() => setIsOpen(false)}
                         >
                             ✖
@@ -100,6 +125,8 @@ function Lifelines() {
                     </div>
                 </div>
             )}
+
+
         </div>
     );
 }

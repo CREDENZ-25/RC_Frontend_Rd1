@@ -18,7 +18,7 @@ function FullScreenEnforcer() {
     };
 
     useEffect(() => {
-        // Delay fullscreen activation slightly to improve success rate
+        // Ensure fullscreen mode is activated when the component mounts
         const timeout = setTimeout(() => {
             enterFullScreen();
         }, 500);
@@ -30,6 +30,7 @@ function FullScreenEnforcer() {
                 
                 setExitAttempts(prev => {
                     const newAttempts = prev + 1;
+                    
                     if (newAttempts >= 3) {
                         alert("You have been logged out due to multiple fullscreen exit attempts.");
                         window.location.href = "/logout"; // Redirect to logout page
@@ -37,6 +38,7 @@ function FullScreenEnforcer() {
                         alert(`You cannot exit fullscreen! Attempt ${newAttempts}/3`);
                         enterFullScreen(); // Re-enter fullscreen
                     }
+
                     return newAttempts;
                 });
             }
@@ -57,7 +59,7 @@ function FullScreenEnforcer() {
         };
     }, []);
 
-    
+    return null; // This component does not render anything
 }
 
 export default FullScreenEnforcer;

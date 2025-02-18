@@ -29,6 +29,7 @@ app.get("/api/question", (req, res) => {
     res.json({ question: questions[count], score });
 });
 
+
 // Route to handle answer submission
 app.post("/api/submit", (req, res) => {
     const { id, answer } = req.body;
@@ -64,6 +65,22 @@ app.post("/api/submit", (req, res) => {
             return res.json({ correct: false, retry: false, score, message: `Incorrect! Moving to question ${questions[count].id}.` });
         }
     }
+});
+
+// Lifeline Routes
+app.post("/lifeline1", (req, res) => {
+    console.log("Lifeline 1 used: Skip");
+    res.json({ message: "Lifeline 1 (Skip) used successfully." });
+});
+
+app.post("/lifeline2", (req, res) => {
+    console.log("Lifeline 2 used: Freeze");
+    res.json({ message: "Lifeline 2 (Freeze) used successfully." });
+});
+
+app.post("/lifeline3", (req, res) => {
+    console.log("Lifeline 3 used: Double");
+    res.json({ message: "Lifeline 3 (Double) used successfully." });
 });
 
 // Start server
