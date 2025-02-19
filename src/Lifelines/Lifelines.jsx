@@ -1,45 +1,69 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
-import { Card } from "pixel-retroui";
-import "pixel-retroui/dist/index.css";
-import "../index.css";
+import Card from "./Card"; // Ensure Card component is correctly imported
 
-
-
-
-function Lifelines() {
+const Lifelines = ({ currentQuestionId, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedLifeline, setSelectedLifeline] = useState(null);
 
-    // Lifeline Information
-    const [lifelines, setLifelines] = useState([
-        { id: 1, title: "Skip", description: "You can skip the question.", endpoint: "lifeline1" },
-        { id: 2, title: "Freeze", description: "Time will be frozen for 2 minutes.", endpoint: "lifeline2" },
-        { id: 3, title: "Double", description: "For 2 minutes, your points will double for correct answers.", endpoint: "lifeline3" },
-    ]);
+    // Lifelines array
+    const lifelines = [
+        {
+            id: "1",
+            title: "Skip Question",
+            description: "Skip the current question without losing points.",
+            type: "skip",
+            used: false,
+        },
+        {
+            id: "2",
+            title: "Double Answer",
+            description: "Get two attempts at the answer.",
+            type: "double",
+            used: false,
+        },
+        {
+            id: "3",
+            title: "Freeze Timer",
+            description: "Pause the timer for an additional 2 minutes.",
+            type: "freeze",
+            used: true,
+        },
+    ];
 
-    const handleLifelineUse = async (endpoint) => {
+    const handleLifelineUse = async (lifelineType) => {
         try {
-            const response = await fetch(`http://localhost:5000/${endpoint}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" }
-            });
+            let payload = { currentQuestionId };
 
-            const data = await response.json();
-            console.log(data.message);
+            if (lifelineType === "double") {
+                payload.answer = answer;
+            }
 
-            // Update the lifelines state to disable the used lifeline
-            setLifelines(prevLifelines =>
-                prevLifelines.map(lifeline =>
-                    lifeline.endpoint === endpoint ? { ...lifeline, used: true } : lifeline
-                )
-            );
+            let endpoint;
+            switch (lifelineType) {
+                case "skip":
+                    endpoint = "/api/skip-lifeline";
+                    break;
+                case "freeze":
+                    endpoint = "/api/increase-timer-lifeline";
+                    break;
+                case "double":
+                    endpoint = "/api/double-lifeline";
+                    break;
+                default:
+                    console.error("Invalid lifeline type");
+                    return;
+            }
+
+            const response = await axios.post(endpoint, payload);
+            console.log(`${lifelineType} lifeline response:`, response.data);
         } catch (error) {
-            console.error("Error using lifeline:", error);
+            console.error(`${lifelineType} lifeline error:`, error.response?.data || error.message);
         }
     };
-
 
     return (
         <div>
@@ -48,7 +72,8 @@ function Lifelines() {
                 textColor="#e2b3cc"
                 borderColor="#451c44"
                 shadowColor="black"
-                className="score w-full lg:w-[17vw] lg:h-[37vh]  sm:h-[30vh]  flex-col justify-center items-center  shadow-black font-custom">
+                className="score w-full lg:w-[17vw] lg:h-[37vh] sm:h-[30vh] flex-col justify-center items-center shadow-black font-custom"
+            >
                 <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                     <text
                         x="50%" y="50%" dominantBaseline="middle" textAnchor="middle"
@@ -61,12 +86,14 @@ function Lifelines() {
 
                 <div className="flex flex-col items-center gap-2 w-full">
                     {lifelines.map((lifeline) => (
-                        <Card key={lifeline.id}
+                        <Card
+                            key={lifeline.id}
                             bg="#ca5f93"
                             textColor="#e2b3cc"
                             borderColor="#451c44"
                             shadowColor="black"
-                            className="w-[90%] h-[40px] flex items-center px-2 shadow-[#c381b5]">
+                            className="w-[90%] h-[40px] flex items-center px-2 shadow-[#c381b5]"
+                        >
                             <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                                 <text
                                     x="1%" y="50%" dominantBaseline="middle"
@@ -82,8 +109,8 @@ function Lifelines() {
                                     <FontAwesomeIcon icon={faCircleInfo} className="text-[#4a0f35] text-lg" />
                                 </button>
                                 <button
-                                    onClick={() => handleLifelineUse(lifeline.endpoint)}
-                                    disabled={lifeline.used} // Disable button if lifeline is used
+                                    onClick={() => handleLifelineUse(lifeline.type)}
+                                    disabled={lifeline.used}
                                     className={`text-[#4a0f35] text-lg ${lifeline.used ? "opacity-50 cursor-not-allowed" : ""}`}
                                 >
                                     <FontAwesomeIcon icon={faCirclePlay} />
@@ -94,18 +121,16 @@ function Lifelines() {
                 </div>
             </Card>
 
-            {/* Pop-up (With Original Design) */}
             {isOpen && selectedLifeline && (
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80"
-                    onClick={() => setIsOpen(false)} // Close when clicking outside
+                    onClick={() => setIsOpen(false)}
                     style={{ zIndex: 100 }}
                 >
                     <div
-                        className="p-6 rounded-lg text-center w-[300px] h-[300px] bg-[#1b1230] shadow-[0_0_8px_#e2b3cc] relative"  // Add relative positioning
-                        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+                        className="p-6 rounded-lg text-center w-[300px] h-[300px] bg-[#1b1230] shadow-[0_0_8px_#e2b3cc] relative"
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Lifeline Card (Unique Content) */}
                         <h2 className="text-2xl font-bold mb-2" style={{ color: "#e2b3cc", fontSize: "35px", marginTop: '50px' }}>
                             {selectedLifeline.title}
                         </h2>
@@ -113,8 +138,6 @@ function Lifelines() {
                         <p className="mb-4" style={{ color: "#e2b3cc", fontSize: "15px" }}>
                             {selectedLifeline.description}
                         </p>
-
-                        {/* Close Button */}
                         <button
                             className="absolute text-white text-lg"
                             style={{ fontFamily: "MyCustomFont", right: '10px', top: '10px', color: "#e2b3cc" }}
@@ -125,10 +148,14 @@ function Lifelines() {
                     </div>
                 </div>
             )}
-
-
         </div>
     );
-}
+};
+
+// Add PropTypes for validation
+Lifelines.propTypes = {
+    currentQuestionId: PropTypes.string.isRequired,
+    answer: PropTypes.string, // Optional string
+};
 
 export default Lifelines;
