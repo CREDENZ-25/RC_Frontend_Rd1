@@ -22,7 +22,7 @@ a {
     align-items: center;
     flex-wrap: wrap;
     letter-spacing: 0.1em;
-    font-size: 75px;
+    font-size: 470%;
     font-weight: 600;
     line-height: 70px;
     text-align: center;
@@ -202,6 +202,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 
 .rank-num,.score-num{
@@ -227,6 +228,8 @@ a {
     text-align: center;
     letter-spacing: 0.03em;
     color: #FFDAB3;
+
+    
 }
 
 .right-card-section{

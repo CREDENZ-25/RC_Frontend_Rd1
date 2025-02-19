@@ -42,19 +42,19 @@ const ResultPage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users/1"
-        );
+        const response = await axios.get("http://localhost:5000/api/submit",{withCredentials:true});
+        console.log("response",reponse)
         const data = response.data;
+        console.log("data",data)
         setUserData({
-          username: data.username || "Default_User",
-          email: data.email || "default@example.com",
-          rank: "10", // Placeholder as API doesn't provide rank
-          score: "85", // Placeholder as API doesn't provide score
-          attemptedQuestions: "25",
-          accuracy: "75%",
-          correctQuestions: "18",
-          totalQuestions: "30",
+          username: data.currentUser,
+          email: data.email,
+          rank: data.rank, 
+          score: data.score,
+          attemptedQuestions: data.totalAttemptedQuestionCount,
+          accuracy: data.accuracy,
+          correctQuestions: data.correctQuestionCount,
+          totalQuestions: data.totalQuestionCount,
         });
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -96,7 +96,7 @@ const ResultPage = () => {
                     bg="#CA5F93"
                     textColor="#FFDAB3"
                     borderColor="#4a1237"
-                    shadowColor="#1E3445"
+                    shadowColor="#CA5F93"
                     className="feedbackBtn"
                   >
                     FEEDBACK
