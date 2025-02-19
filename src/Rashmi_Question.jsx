@@ -7,7 +7,7 @@ import Lifelines from './Lifelines/Lifelines';
 import FullScreenEnforcer from "./Fullscreen/Fullscreen";
 
 function Rashmi_Question() {
-    const [questions, setQuestion] = useState([]);
+    const [questions, setQuestion] = useState([123]);
     const [answer, setAnswer] = useState({ input1: "", input2: "" });
     const [input1Disabled, setInput1Disabled] = useState(false);
     const [input2Disabled, setInput2Disabled] = useState(true);
@@ -25,6 +25,7 @@ function Rashmi_Question() {
         try {
             const res = await fetch("http://localhost:5000/api/start"); // Change this to your backend URL if necessary
             const data = await res.json();
+            console.log("DATA: ",data );
             setQuestion([data.questions]); // Store question in state
             setAnswer({ input1: "", input2: "" }); // Clear inputs
             setTimeLeft(data.timeLeft); // Set time left

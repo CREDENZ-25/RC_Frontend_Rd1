@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
-import Card from "./Card"; // Ensure Card component is correctly imported
+import { Card } from 'pixel-retroui';
 
 const Lifelines = ({ currentQuestionId, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
