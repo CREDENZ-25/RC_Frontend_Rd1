@@ -7,14 +7,19 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { authUser, notAuthUser } from "../redux/slices/authSlice";
 import { Input } from "pixel-retroui";
+import { configDotenv } from "dotenv";
+
 
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+const loginUrl = import.meta.env.VITE_LOGIN_URL;
+
   axios.defaults.withCredentials = true;
 
   const [logData, setLogData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -31,7 +36,7 @@ function LoginPage() {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/auth/login",
+        "http://localhost:3000/auth/login",
         logData,
         { withCredentials: true }
       );
@@ -39,7 +44,7 @@ function LoginPage() {
       console.log(res.data);
 
       dispatch(authUser());
-      navigate("/dashboard"); // Navigate after successful login
+      navigate("/instructions"); // Navigate after successful login
     } catch (err) {
       toast.warning("Invalid Username or Password", { position: "top-center" });
       dispatch(notAuthUser());
